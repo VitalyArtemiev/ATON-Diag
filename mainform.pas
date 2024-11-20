@@ -199,13 +199,10 @@ var
 begin
   //WriteProgramLog('Подключение...');
   TestResult:= '';
-
-  //ConnectionKind:= cSerial;
   SerPort:= TBlockSerial.Create;
-  SerPort.ConvertLineEnd:= true;
   SerPort.DeadLockTimeOut:= 4000;
-  SerPort.RaiseExcept:= true;
-  SerPort.TestDsr:= true;
+  //SerPort.RaiseExcept:= true;
+  //SerPort.TestDsr:= true;
   try
     s:= cbPortSelect.Text;
     SerPort.Connect(s);
@@ -222,29 +219,24 @@ begin
         StatusBar.Update;
         //WriteProgramLog(s);
         Parity:= cbParity.Text[1];
-        SerPort.Config(seBaudRate.Value, 8, Parity, 2, true, true);
-          sleep(500);
-        SerPort.Purge;
+        SerPort.Config(seBaudRate.Value, 8, Parity, SB2, False, False);
           sleep(500);
 
         //command:= HexStr($0103080000104666);
 
         //SerPort.SendInteger($0C030800001AC77C);   //cts????
-        SerPort.SendByte($0C);
+        SerPort.SendByte(byte(ID));
         SerPort.SendByte($03);
         SerPort.SendByte($08);
         SerPort.SendByte($00);
         SerPort.SendByte($00);
-        SerPort.SendByte($10);
+        SerPort.SendByte($1A);
         SerPort.SendByte($C7);
         SerPort.SendByte($7C);
 
-        SerPort.SendByte($0D);
-        SerPort.SendByte($0A);
-
         //ts := TStream.Create;
         //Serport.RecvStreamSize(ts, 1000, 32);
-        //showmessage(inttostr(SerPort.WaitingDataex()));
+        showmessage(inttostr(SerPort.WaitingDataex()));
 
         serport.RecvBufferEx(@buf[0], 128, 1000);
 

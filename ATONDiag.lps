@@ -20,8 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
-        <TopLine Value="208"/>
-        <CursorPos X="61" Y="252"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="195"/>
+        <CursorPos X="5" Y="205"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -50,10 +51,9 @@
       </Unit>
       <Unit>
         <Filename Value="lib\synapse-Release.40\synaser.pas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="2086"/>
-        <CursorPos Y="2119"/>
+        <CursorPos X="22" Y="2097"/>
         <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit>
@@ -75,19 +75,11 @@
         <EditorIndex Value="2"/>
         <TopLine Value="925"/>
         <CursorPos X="3" Y="933"/>
-        <UsageCount Value="19"/>
+        <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="28">
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="51" Column="14" TopLine="18"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="194" Column="3" TopLine="184"/>
-      </Position>
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="52" Column="14" TopLine="19"/>
@@ -195,6 +187,18 @@
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="252" Column="61" TopLine="208"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="228" Column="54" TopLine="208"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="201" Column="19" TopLine="186"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="59" Column="5" TopLine="35"/>
       </Position>
     </JumpHistory>
     <RunParams>

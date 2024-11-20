@@ -8,7 +8,7 @@
       <Unit>
         <Filename Value="ATONDiag.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="9"/>
         <CursorPos Y="24"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="195"/>
-        <CursorPos X="5" Y="205"/>
+        <TopLine Value="320"/>
+        <CursorPos Y="351"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -30,30 +30,31 @@
       <Unit>
         <Filename Value="C:\ProgramData\lazarus\lcl\stdctrls.pp"/>
         <UnitName Value="StdCtrls"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="457"/>
-        <CursorPos X="14" Y="489"/>
-        <UsageCount Value="130"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="580"/>
+        <CursorPos X="15" Y="613"/>
+        <UsageCount Value="127"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\ProgramData\lazarus\lcl\include\customcombobox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="302"/>
         <CursorPos X="3" Y="311"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="126"/>
       </Unit>
       <Unit>
         <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\strutils.pp"/>
         <UnitName Value="StrUtils"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="133"/>
-        <UsageCount Value="99"/>
+        <UsageCount Value="95"/>
       </Unit>
       <Unit>
         <Filename Value="lib\synapse-Release.40\synaser.pas"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="2086"/>
-        <CursorPos X="22" Y="2097"/>
+        <CursorPos Y="2119"/>
         <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit>
@@ -61,144 +62,190 @@
         <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\rtl\objpas\objpas.pp"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="8" Y="35"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="87"/>
       </Unit>
       <Unit>
         <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\rtl\inc\systemh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1171"/>
         <CursorPos X="11" Y="1204"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="87"/>
       </Unit>
       <Unit>
         <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="925"/>
-        <CursorPos X="3" Y="933"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="669"/>
+        <CursorPos X="14" Y="701"/>
+        <UsageCount Value="39"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\ProgramData\lazarus\lcl\editbtn.pas"/>
+        <UnitName Value="EditBtn"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="709"/>
+        <CursorPos X="16" Y="743"/>
+        <UsageCount Value="29"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\dateutils.pp"/>
+        <UnitName Value="DateUtils"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="29"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="130"/>
+        <CursorPos X="15" Y="141"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\ProgramData\lazarus\lcl\include\customlistbox.inc"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="637"/>
+        <CursorPos X="3" Y="639"/>
+        <UsageCount Value="16"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\rtl\objpas\classes\stringl.inc"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="1060"/>
+        <CursorPos X="3" Y="1063"/>
+        <UsageCount Value="16"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\ProgramData\lazarus\fpc\3.2.2\source\rtl\inc\mathh.inc"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="44" Y="52"/>
+        <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="28">
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="52" Column="14" TopLine="19"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="203" Column="48" TopLine="154"/>
+        <Caret Line="267" Column="39" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="170" Column="41" TopLine="137"/>
-      </Position>
-      <Position>
-        <Filename Value="lib\synapse-Release.40\synaser.pas"/>
-        <Caret Line="455" Column="14" TopLine="409"/>
+        <Caret Line="269" Column="55" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="170" Column="41" TopLine="137"/>
+        <Caret Line="268" Column="55" TopLine="244"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="319" Column="3" TopLine="287"/>
+        <Caret Line="269" Column="51" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="51" Column="14" TopLine="18"/>
+        <Caret Line="270" Column="51" TopLine="246"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="241" Column="29" TopLine="209"/>
+        <Caret Line="271" Column="51" TopLine="247"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="252" Column="38" TopLine="209"/>
+        <Caret Line="274" Column="51" TopLine="250"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="244" Column="44" TopLine="209"/>
+        <Caret Line="275" Column="51" TopLine="251"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="235" Column="30" TopLine="209"/>
+        <Caret Line="274" Column="51" TopLine="250"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="242" Column="34" TopLine="210"/>
+        <Caret Line="275" Column="51" TopLine="251"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="232" Column="9" TopLine="188"/>
+        <Caret Line="276" Column="51" TopLine="252"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="220" Column="66" TopLine="189"/>
+        <Caret Line="275" Column="51" TopLine="251"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="221" Column="66" TopLine="190"/>
+        <Caret Line="276" Column="51" TopLine="252"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="222" Column="66" TopLine="191"/>
+        <Caret Line="277" Column="51" TopLine="253"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="223" Column="66" TopLine="192"/>
+        <Caret Line="265" Column="59" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="217" Column="9" TopLine="193"/>
+        <Caret Line="117" Column="63" TopLine="94"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="243" Column="32" TopLine="193"/>
+        <Caret Line="305" Column="29" TopLine="274"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="253" Column="33" TopLine="211"/>
+        <Caret Line="118" Column="54" TopLine="87"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="239" Column="29" TopLine="211"/>
+        <Caret Line="281" Column="57" TopLine="250"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="240" Column="29" TopLine="211"/>
+        <Caret Line="305" Column="51" TopLine="274"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="237" Column="29" TopLine="211"/>
-      </Position>
-      <Position>
-        <Filename Value="lib\synapse-Release.40\synaser.pas"/>
-        <Caret Line="514" Column="14" TopLine="484"/>
-      </Position>
-      <Position>
-        <Filename Value="lib\synapse-Release.40\synaser.pas"/>
-        <Caret Line="1479" TopLine="1475"/>
+        <Caret Line="464" Column="27" TopLine="405"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="228" Column="22" TopLine="199"/>
+        <Caret Line="9" Column="9" TopLine="28"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="252" Column="61" TopLine="208"/>
+        <Caret Line="293" Column="24" TopLine="263"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="228" Column="54" TopLine="208"/>
+        <Caret Line="291" Column="34" TopLine="278"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="201" Column="19" TopLine="186"/>
+        <Caret Line="117" Column="15" TopLine="87"/>
       </Position>
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="59" Column="5" TopLine="35"/>
+        <Caret Line="319" Column="90" TopLine="276"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="321" Column="27" TopLine="279"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="299" Column="46" TopLine="279"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="120" Column="43" TopLine="90"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="315" Column="33" TopLine="273"/>
       </Position>
     </JumpHistory>
     <RunParams>

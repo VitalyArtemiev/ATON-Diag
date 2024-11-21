@@ -71,17 +71,59 @@ type
   TMainF = class(TForm)
     bConnect: TButton;
     bDisconnect: TButton;
+    cbParity2: TComboBox;
+    cbParity3: TComboBox;
+    cbParity4: TComboBox;
+    cbParity5: TComboBox;
+    cbParity6: TComboBox;
+    cbParity7: TComboBox;
+    cbParity8: TComboBox;
     cbPortSelect: TComboBox;
-    cbParity: TComboBox;
-    clbLog: TCheckListBox;
+    cbParity1: TComboBox;
+    clbLog1: TCheckListBox;
+    clbLog2: TCheckListBox;
+    clbLog3: TCheckListBox;
+    clbLog4: TCheckListBox;
+    clbLog5: TCheckListBox;
+    clbLog6: TCheckListBox;
+    clbLog7: TCheckListBox;
+    clbLog8: TCheckListBox;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
     Label2: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     lActual: TLabel;
     lTotalMessages: TLabel;
     lLog: TLabel;
     lTimeouts: TLabel;
     lCRCErr: TLabel;
-    seActual: TFloatSpinEditEx;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    seActual1: TFloatSpinEditEx;
     iBaudRate: TLabel;
     iDeviceID: TLabel;
     iExpectedValue: TLabel;
@@ -93,16 +135,86 @@ type
     About: TMenuItem;
     Panel1: TPanel;
     pCaptions: TPanel;
-    seTotalMessages: TSpinEditEx;
-    seExpected: TFloatSpinEdit;
-    seMargin: TSpinEdit;
-    seID: TSpinEdit;
+    seActual2: TFloatSpinEditEx;
+    seActual3: TFloatSpinEditEx;
+    seActual4: TFloatSpinEditEx;
+    seActual5: TFloatSpinEditEx;
+    seActual6: TFloatSpinEditEx;
+    seActual7: TFloatSpinEditEx;
+    seActual8: TFloatSpinEditEx;
+    seBaudRate2: TSpinEdit;
+    seBaudRate3: TSpinEdit;
+    seBaudRate4: TSpinEdit;
+    seBaudRate5: TSpinEdit;
+    seBaudRate6: TSpinEdit;
+    seBaudRate7: TSpinEdit;
+    seBaudRate8: TSpinEdit;
+    seCRCErrPercent2: TSpinEditEx;
+    seCRCErrPercent3: TSpinEditEx;
+    seCRCErrPercent4: TSpinEditEx;
+    seCRCErrPercent5: TSpinEditEx;
+    seCRCErrPercent6: TSpinEditEx;
+    seCRCErrPercent7: TSpinEditEx;
+    seCRCErrPercent8: TSpinEditEx;
+    seCRCErrTotal2: TSpinEditEx;
+    seCRCErrTotal3: TSpinEditEx;
+    seCRCErrTotal4: TSpinEditEx;
+    seCRCErrTotal5: TSpinEditEx;
+    seCRCErrTotal6: TSpinEditEx;
+    seCRCErrTotal7: TSpinEditEx;
+    seCRCErrTotal8: TSpinEditEx;
+    seExpected2: TFloatSpinEdit;
+    seExpected3: TFloatSpinEdit;
+    seExpected4: TFloatSpinEdit;
+    seExpected5: TFloatSpinEdit;
+    seExpected6: TFloatSpinEdit;
+    seExpected7: TFloatSpinEdit;
+    seExpected8: TFloatSpinEdit;
+    seID2: TSpinEdit;
+    seID3: TSpinEdit;
+    seID4: TSpinEdit;
+    seID5: TSpinEdit;
+    seID6: TSpinEdit;
+    seID7: TSpinEdit;
+    seID8: TSpinEdit;
+    seMargin2: TSpinEdit;
+    seMargin3: TSpinEdit;
+    seMargin4: TSpinEdit;
+    seMargin5: TSpinEdit;
+    seMargin6: TSpinEdit;
+    seMargin7: TSpinEdit;
+    seMargin8: TSpinEdit;
+    seTimeoutsPercent2: TSpinEditEx;
+    seTimeoutsPercent3: TSpinEditEx;
+    seTimeoutsPercent4: TSpinEditEx;
+    seTimeoutsPercent5: TSpinEditEx;
+    seTimeoutsPercent6: TSpinEditEx;
+    seTimeoutsPercent7: TSpinEditEx;
+    seTimeoutsPercent8: TSpinEditEx;
+    seTimeoutsTotal2: TSpinEditEx;
+    seTimeoutsTotal3: TSpinEditEx;
+    seTimeoutsTotal4: TSpinEditEx;
+    seTimeoutsTotal5: TSpinEditEx;
+    seTimeoutsTotal6: TSpinEditEx;
+    seTimeoutsTotal7: TSpinEditEx;
+    seTimeoutsTotal8: TSpinEditEx;
+    seTotalMessages1: TSpinEditEx;
+    seExpected1: TFloatSpinEdit;
+    seMargin1: TSpinEdit;
+    seID1: TSpinEdit;
     seNumDevices: TSpinEdit;
-    seBaudRate: TSpinEdit;
-    seCRCErrPercent: TSpinEditEx;
-    seTimeoutsTotal: TSpinEditEx;
-    seTimeoutsPercent: TSpinEditEx;
-    seCRCErrTotal: TSpinEditEx;
+    seBaudRate1: TSpinEdit;
+    seCRCErrPercent1: TSpinEditEx;
+    seTimeoutsTotal1: TSpinEditEx;
+    seTimeoutsPercent1: TSpinEditEx;
+    seCRCErrTotal1: TSpinEditEx;
+    seTotalMessages2: TSpinEditEx;
+    seTotalMessages3: TSpinEditEx;
+    seTotalMessages4: TSpinEditEx;
+    seTotalMessages5: TSpinEditEx;
+    seTotalMessages6: TSpinEditEx;
+    seTotalMessages7: TSpinEditEx;
+    seTotalMessages8: TSpinEditEx;
     StatusBar: TStatusBar;
     teQueryInterval: TDateTimePicker;
     tQuery: TTimer;
@@ -111,6 +223,7 @@ type
     procedure bDisconnectClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     function ConnectSerial: longint;
+    procedure seNumDevicesChange(Sender: TObject);
     procedure tbQueryChange(Sender: TObject);
     procedure teQueryIntervalChange(Sender: TObject);
     procedure tQueryTimer(Sender: TObject);
@@ -254,14 +367,14 @@ var
 begin
   if SerPort.InstanceActive then
   begin
-    Value := getDeviceData(byte(seID.Value));
+    Value := getDeviceData(byte(seID1.Value));
     float := double(Value) / 10;
-    seActual.Value := float;
-    clbLog.AddItem(FloatToStrf(float, ffFixed, 2, 2), nil);
+    seActual1.Value := float;
+    clbLog1.AddItem(FloatToStrf(float, ffFixed, 2, 2), nil);
 
-    clbLog.Checked[clbLog.Count - 1] :=
-      withinMargin(seExpected.Value, seActual.Value, seMargin.Value);
-    clbLog.TopIndex := clbLog.Count - 1;
+    clbLog1.Checked[clbLog1.Count - 1] :=
+      withinMargin(seExpected1.Value, seActual1.Value, seMargin1.Value);
+    clbLog1.TopIndex := clbLog1.Count - 1;
   end;
 end;
 
@@ -304,7 +417,7 @@ begin
   StatusBar.Panels[spDevice].Text := 'Quering device ID: ' + IntToStr(id);
   StatusBar.Update;
   SerPort.RaiseExcept := False;
-  seTotalMessages.Value := seTotalMessages.Value + 1;
+  seTotalMessages1.Value := seTotalMessages1.Value + 1;
 
   sendCommand(byte(ID), $03, $0800, $001A);
   Count := serport.RecvBufferEx(@buf[0], 31, 500);
@@ -314,14 +427,14 @@ begin
   else
   begin
     Inc(timeoutCount);
-    seTimeoutsTotal.Value := seTimeoutsTotal.Value + 1;
+    seTimeoutsTotal1.Value := seTimeoutsTotal1.Value + 1;
 
     StatusBar.Panels[spTimeouts].Text := 'Timeouts: ' + IntToStr(timeoutCount);
     StatusBar.Update;
     Result := 0;
   end;
   //Math.SetRoundMode(rmUp);
-  seTimeoutsPercent.Value := round(seTimeoutsTotal.Value / seTotalMessages.Value * 100);
+  seTimeoutsPercent1.Value := round(seTimeoutsTotal1.Value / seTotalMessages1.Value * 100);
   SerPort.RaiseExcept := True;
   StatusBar.Panels[spDevice].Text := '';
   StatusBar.Update;
@@ -354,15 +467,15 @@ begin
     begin
       for i := 1 to seNumDevices.Value do
       begin
-        ID := seID.Value;
+        ID := seID1.Value;
         //SerPort.RaiseExcept:= false;   //because this resets in recvstring
 
         s := 'Попытка подключения к ' + cbPortSelect.Text;
         StatusBar.Panels[spConnection].Text := s;
         StatusBar.Update;
         //WriteProgramLog(s);
-        Parity := cbParity.Text[1];
-        SerPort.Config(seBaudRate.Value, 8, Parity, SB2, False, False);
+        Parity := cbParity1.Text[1];
+        SerPort.Config(seBaudRate1.Value, 8, Parity, SB2, False, False);
         sleep(500);
       end;
     end
@@ -408,7 +521,7 @@ begin
       //WriteProgramLog(StatusBar.Panels[spStatus].Text);
 
       SerPort.CloseSocket;
-      FreeAndNil(SerPort);
+      //FreeAndNil(SerPort);
       if Result = 0 then
         Result := -5; //this should never happen; instance not active
       exit;
@@ -422,13 +535,23 @@ begin
       //WriteProgramLog('LB' + SerPort.LineBuffer, true);
       ShowMessage(E.Message);
       SerPort.CloseSocket;
-      FreeAndNil(SerPort);
+      //FreeAndNil(SerPort);
       Result := -6; //driver error: receive framing error
     end;
   end;
 end;
 
-
+procedure TMainF.seNumDevicesChange(Sender: TObject);
+begin
+     Panel2.Visible:= seNumDevices.Value > 1;
+     Panel3.Visible:= seNumDevices.Value > 2;
+     Panel4.Visible:= seNumDevices.Value > 3;
+     Panel5.Visible:= seNumDevices.Value > 4;
+     Panel6.Visible:= seNumDevices.Value > 5;
+     Panel7.Visible:= seNumDevices.Value > 6;
+     Panel8.Visible:= seNumDevices.Value > 7;
+     Width:= 780 + Panel1.Width * (seNumDevices.Value -5)
+end;
 
 procedure TMainF.bConnectClick(Sender: TObject);
 var
@@ -436,8 +559,6 @@ var
   Crutch: integer absolute Result;
 begin
   //SetCursorAll(crHourGlass);
-
-  //btnDisconnectClick(Sender);
 
   Result := ConnectSerial;
 
@@ -466,7 +587,7 @@ begin
       SerPort.Purge;
       SerPort.CloseSocket;
     end;
-    clbLog.Clear;
+    clbLog1.Clear;
     //freeandnil(SerPort);
   end;
   bConnect.Enabled := True;

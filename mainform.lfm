@@ -1,28 +1,27 @@
 object MainF: TMainF
-  Left = 1318
-  Height = 576
-  Top = 281
-  Width = 1212
+  Left = 1298
+  Height = 560
+  Top = 96
+  Width = 1199
   Caption = 'ATON Diag'
-  ClientHeight = 576
-  ClientWidth = 1212
-  Constraints.MaxHeight = 576
+  ClientHeight = 560
+  ClientWidth = 1199
+  Constraints.MaxHeight = 560
   Constraints.MaxWidth = 1200
-  Constraints.MinHeight = 576
+  Constraints.MinHeight = 560
   Constraints.MinWidth = 780
-  Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '3.4.0.0'
   object bConnect: TButton
-    AnchorSideLeft.Control = cbPortSelect
+    AnchorSideLeft.Control = seBaudRate
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = cbPortSelect
-    Left = 187
+    Left = 395
     Height = 23
-    Top = 8
-    Width = 119
+    Top = 24
+    Width = 96
     BorderSpacing.Left = 8
-    Caption = 'Подключить'
+    Caption = 'Connect'
     TabOrder = 0
     OnClick = bConnectClick
   end
@@ -33,67 +32,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 76
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
     TabOrder = 1
-    object seBaudRate1: TSpinEdit
-      AnchorSideLeft.Control = cbParity1
-      AnchorSideTop.Control = cbParity1
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity1
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity1: TComboBox
-      AnchorSideLeft.Control = Panel1
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label1
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
     object Label1: TLabel
       AnchorSideLeft.Control = Panel1
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel1
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 1'
+      Caption = 'Device 1'
     end
     object seID1: TSpinEdit
-      AnchorSideLeft.Control = cbParity1
-      AnchorSideTop.Control = seBaudRate1
+      AnchorSideLeft.Control = Panel1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label1
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity1
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin1: TSpinEdit
+      AnchorSideLeft.Control = Panel1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -101,48 +77,14 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin1: TSpinEdit
-      AnchorSideLeft.Control = cbParity1
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity1
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual1: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity1
+      AnchorSideLeft.Control = seMargin1
       AnchorSideTop.Control = seMargin1
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity1
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected1: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity1
-      AnchorSideTop.Control = seID1
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity1
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -150,19 +92,23 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog1: TCheckListBox
-      AnchorSideLeft.Control = cbParity1
+      AnchorSideLeft.Control = Panel1
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual1
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity1
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -170,20 +116,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal1: TSpinEditEx
-      AnchorSideLeft.Control = cbParity1
+      AnchorSideLeft.Control = clbLog1
       AnchorSideTop.Control = clbLog1
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -194,12 +140,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal1
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -214,22 +160,22 @@ object MainF: TMainF
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal1: TSpinEditEx
-      AnchorSideLeft.Control = cbParity1
+      AnchorSideLeft.Control = seTimeoutsTotal1
       AnchorSideTop.Control = seTimeoutsTotal1
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -240,12 +186,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal1
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
@@ -258,41 +204,105 @@ object MainF: TMainF
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages1: TSpinEditEx
-      AnchorSideLeft.Control = cbParity1
-      AnchorSideTop.Control = seCRCErrTotal1
+      AnchorSideLeft.Control = seCRCErrTotal1
+      AnchorSideTop.Control = seOKTotal1
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent1: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal1
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal1
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal1: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal1
+      AnchorSideTop.Control = seCRCErrTotal1
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label4: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent1
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent1
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected1: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID1
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DisplayMode = dmAuto
     end
   end
   object StatusBar: TStatusBar
     Left = 0
     Height = 23
-    Top = 553
-    Width = 1212
+    Top = 537
+    Width = 1199
+    AutoHint = True
     Panels = <    
       item
-        Width = 320
+        Width = 300
       end    
       item
         Width = 160
       end    
       item
-        Width = 160
+        Width = 120
+      end    
+      item
+        Width = 120
       end    
       item
         Width = 50
@@ -302,14 +312,14 @@ object MainF: TMainF
   object cbPortSelect: TComboBox
     Left = 10
     Height = 23
-    Top = 8
+    Top = 24
     Width = 169
     ItemHeight = 15
     TabOrder = 3
-    Text = 'cbPortSelect'
+    Text = 'No Serial detected'
   end
   object seNumDevices: TSpinEdit
-    AnchorSideLeft.Control = lParity1
+    AnchorSideLeft.Control = lDeviceNum
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = cbPortSelect
     AnchorSideTop.Side = asrBottom
@@ -317,7 +327,7 @@ object MainF: TMainF
     AnchorSideRight.Side = asrBottom
     Left = 118
     Height = 23
-    Top = 39
+    Top = 55
     Width = 61
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 8
@@ -326,148 +336,142 @@ object MainF: TMainF
     MinValue = 1
     OnChange = seNumDevicesChange
     TabOrder = 4
-    Value = 1
+    Value = 5
   end
   object pCaptions: TPanel
-    Left = 8
-    Height = 440
-    Top = 104
-    Width = 68
-    ClientHeight = 440
-    ClientWidth = 68
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = teQueryInterval
+    AnchorSideTop.Side = asrBottom
+    Left = 4
+    Height = 411
+    Top = 117
+    Width = 72
+    BorderSpacing.Left = 4
+    BorderSpacing.Top = 8
+    ClientHeight = 411
+    ClientWidth = 72
     TabOrder = 5
-    object lParity: TLabel
-      AnchorSideLeft.Control = pCaptions
-      AnchorSideTop.Control = pCaptions
-      Left = 5
-      Height = 15
-      Top = 25
-      Width = 30
-      BorderSpacing.Left = 4
-      BorderSpacing.Top = 24
-      Caption = 'Parity'
-    end
-    object iBaudRate: TLabel
-      AnchorSideLeft.Control = lParity
-      AnchorSideTop.Control = lParity
-      AnchorSideTop.Side = asrBottom
-      Left = 5
-      Height = 15
-      Top = 52
-      Width = 50
-      BorderSpacing.Top = 12
-      Caption = 'Baud rate'
-    end
     object iDeviceID: TLabel
-      AnchorSideLeft.Control = lParity
-      AnchorSideTop.Control = iBaudRate
+      AnchorSideLeft.Control = pCaptions
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 79
+      Top = 24
       Width = 49
       BorderSpacing.Top = 12
       Caption = 'Device ID'
     end
     object iExpectedValue: TLabel
-      AnchorSideLeft.Control = lParity
+      AnchorSideLeft.Control = iDeviceID
       AnchorSideTop.Control = iDeviceID
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 106
+      Top = 51
       Width = 47
       BorderSpacing.Top = 12
       Caption = 'Expected'
     end
     object lMargin: TLabel
-      AnchorSideLeft.Control = lParity
+      AnchorSideLeft.Control = iDeviceID
       AnchorSideTop.Control = iExpectedValue
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 133
+      Top = 78
       Width = 54
       BorderSpacing.Top = 12
       Caption = 'Margin, %'
     end
     object lActual: TLabel
-      AnchorSideLeft.Control = lParity
+      AnchorSideLeft.Control = iDeviceID
       AnchorSideTop.Control = lMargin
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 160
+      Top = 105
       Width = 34
       BorderSpacing.Top = 12
       Caption = 'Actual'
     end
     object lLog: TLabel
-      AnchorSideLeft.Control = lParity
+      AnchorSideLeft.Control = iDeviceID
       AnchorSideTop.Control = lActual
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 191
+      Top = 136
       Width = 20
       BorderSpacing.Top = 16
       Caption = 'Log'
     end
     object lTimeouts: TLabel
-      AnchorSideLeft.Control = lParity
+      AnchorSideLeft.Control = iDeviceID
       AnchorSideTop.Control = lLog
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 350
+      Top = 295
       Width = 50
       BorderSpacing.Top = 144
       Caption = 'Timeouts'
     end
     object lCRCErr: TLabel
-      AnchorSideLeft.Control = lParity
+      AnchorSideLeft.Control = iDeviceID
       AnchorSideTop.Control = lTimeouts
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 377
+      Top = 322
       Width = 56
       BorderSpacing.Top = 12
       Caption = 'CRC Errors'
     end
     object lTotalMessages: TLabel
-      AnchorSideLeft.Control = lParity
-      AnchorSideTop.Control = lCRCErr
+      AnchorSideLeft.Control = iDeviceID
+      AnchorSideTop.Control = lOK
       AnchorSideTop.Side = asrBottom
-      Left = 5
+      Left = 12
       Height = 15
-      Top = 404
+      Top = 376
       Width = 26
       BorderSpacing.Top = 12
       Caption = 'Total'
+    end
+    object lOK: TLabel
+      AnchorSideLeft.Control = iDeviceID
+      AnchorSideTop.Control = lCRCErr
+      AnchorSideTop.Side = asrBottom
+      Left = 12
+      Height = 15
+      Top = 349
+      Width = 57
+      BorderSpacing.Top = 12
+      Caption = 'Margin OK'
     end
   end
   object bDisconnect: TButton
     AnchorSideLeft.Control = bConnect
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = cbPortSelect
-    Left = 314
+    Left = 499
     Height = 23
-    Top = 8
-    Width = 119
+    Top = 24
+    Width = 96
     BorderSpacing.Left = 8
-    Caption = 'Отключить'
+    Caption = 'Disconnect'
     Enabled = False
     TabOrder = 6
     OnClick = bDisconnectClick
   end
-  object lParity1: TLabel
+  object lDeviceNum: TLabel
     AnchorSideLeft.Control = cbPortSelect
     AnchorSideTop.Control = cbPortSelect
     AnchorSideTop.Side = asrBottom
     Left = 10
     Height = 15
-    Top = 39
+    Top = 55
     Width = 100
     BorderSpacing.Top = 8
     Caption = 'Number of devices'
@@ -480,11 +484,11 @@ object MainF: TMainF
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = teQueryInterval
     AnchorSideBottom.Side = asrBottom
-    Left = 104
+    Left = 187
     Height = 23
-    Top = 70
-    Width = 75
-    Anchors = [akTop, akRight, akBottom]
+    Top = 86
+    Width = 96
+    Anchors = [akTop, akLeft, akBottom]
     BorderSpacing.Left = 8
     Caption = 'Query OFF'
     Enabled = False
@@ -492,13 +496,15 @@ object MainF: TMainF
     OnChange = tbQueryChange
   end
   object teQueryInterval: TDateTimePicker
-    AnchorSideLeft.Control = cbPortSelect
+    AnchorSideLeft.Control = seNumDevices
     AnchorSideTop.Control = seNumDevices
     AnchorSideTop.Side = asrBottom
-    Left = 10
+    AnchorSideRight.Control = seNumDevices
+    AnchorSideRight.Side = asrBottom
+    Left = 118
     Height = 23
-    Top = 70
-    Width = 50
+    Top = 86
+    Width = 61
     CenturyFrom = 1941
     MaxDate = 2958465
     MinDate = -53780
@@ -507,16 +513,107 @@ object MainF: TMainF
     TrailingSeparator = False
     TextForNullDate = 'NULL'
     LeadingZeros = True
+    Anchors = [akTop, akLeft, akRight]
     Kind = dtkTime
     TimeFormat = tf24
     TimeDisplay = tdHMS
     DateMode = dmComboBox
     Date = 45616
-    Time = 0.000115740738692693
+    Time = 0.0000578703693463467
     UseDefaultSeparators = True
     HideDateTimeParts = [dtpDay, dtpMonth, dtpYear, dtpHour]
     MonthNames = 'Long'
     OnChange = teQueryIntervalChange
+  end
+  object cbParity: TComboBox
+    AnchorSideLeft.Control = cbPortSelect
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = cbPortSelect
+    Left = 187
+    Height = 23
+    Top = 24
+    Width = 96
+    BorderSpacing.Left = 8
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'None'
+      'Odd'
+      'Even'
+      'Mark'
+      'Space'
+    )
+    TabOrder = 9
+    Text = 'None'
+  end
+  object seBaudRate: TSpinEdit
+    AnchorSideLeft.Control = cbParity
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = cbPortSelect
+    AnchorSideRight.Side = asrBottom
+    Left = 291
+    Height = 23
+    Top = 24
+    Width = 96
+    BorderSpacing.Left = 8
+    TabOrder = 10
+    Value = 9600
+  end
+  object lParity: TLabel
+    AnchorSideLeft.Control = cbParity
+    AnchorSideBottom.Control = cbParity
+    Left = 187
+    Height = 15
+    Top = 5
+    Width = 30
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 4
+    Caption = 'Parity'
+  end
+  object iBaudRate: TLabel
+    AnchorSideLeft.Control = seBaudRate
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = seBaudRate
+    Left = 291
+    Height = 15
+    Top = 5
+    Width = 50
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 4
+    Caption = 'Baud rate'
+  end
+  object lPort: TLabel
+    AnchorSideLeft.Control = cbPortSelect
+    AnchorSideBottom.Control = cbPortSelect
+    Left = 10
+    Height = 15
+    Top = 5
+    Width = 53
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 4
+    Caption = 'Serial port'
+  end
+  object lInterval: TLabel
+    AnchorSideLeft.Control = lDeviceNum
+    AnchorSideTop.Control = teQueryInterval
+    Left = 10
+    Height = 15
+    Top = 86
+    Width = 74
+    Caption = 'Query interval'
+  end
+  object bRescan: TButton
+    AnchorSideLeft.Control = bDisconnect
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = cbPortSelect
+    Left = 603
+    Height = 23
+    Top = 24
+    Width = 96
+    BorderSpacing.Left = 8
+    Caption = 'Rescan'
+    TabOrder = 11
+    OnClick = bRescanClick
   end
   object Panel2: TPanel
     AnchorSideLeft.Control = Panel1
@@ -525,68 +622,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 216
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 9
-    Visible = False
-    object seBaudRate2: TSpinEdit
-      AnchorSideLeft.Control = cbParity2
-      AnchorSideTop.Control = cbParity2
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity2
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity2: TComboBox
-      AnchorSideLeft.Control = Panel2
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label4
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label4: TLabel
+    TabOrder = 12
+    object Label5: TLabel
       AnchorSideLeft.Control = Panel2
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel2
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 2'
     end
     object seID2: TSpinEdit
-      AnchorSideLeft.Control = cbParity2
-      AnchorSideTop.Control = seBaudRate2
+      AnchorSideLeft.Control = Panel2
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label5
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity2
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin2: TSpinEdit
+      AnchorSideLeft.Control = Panel2
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -594,68 +667,37 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin2: TSpinEdit
-      AnchorSideLeft.Control = cbParity2
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity2
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual2: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity2
+      AnchorSideLeft.Control = seMargin2
       AnchorSideTop.Control = seMargin2
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity2
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected2: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity2
-      AnchorSideTop.Control = seID2
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity2
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
       Top = 105
       Width = 115
-      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog2: TCheckListBox
-      AnchorSideLeft.Control = cbParity2
+      AnchorSideLeft.Control = Panel2
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual2
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity2
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -663,20 +705,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal2: TSpinEditEx
-      AnchorSideLeft.Control = cbParity2
+      AnchorSideLeft.Control = clbLog2
       AnchorSideTop.Control = clbLog2
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -687,12 +729,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal2
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -700,29 +742,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label5: TLabel
+    object Label6: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent2
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent2
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal2: TSpinEditEx
-      AnchorSideLeft.Control = cbParity2
+      AnchorSideLeft.Control = seTimeoutsTotal2
       AnchorSideTop.Control = seTimeoutsTotal2
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -733,43 +775,104 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal2
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label6: TLabel
+    object Label7: TLabel
       AnchorSideLeft.Control = seCRCErrPercent2
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent2
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages2: TSpinEditEx
-      AnchorSideLeft.Control = cbParity2
-      AnchorSideTop.Control = seCRCErrTotal2
+      AnchorSideLeft.Control = seCRCErrTotal2
+      AnchorSideTop.Control = seOKTotal2
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent2: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal2
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal2: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal2
+      AnchorSideTop.Control = seCRCErrTotal2
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label8: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent2
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected2: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel2
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
     end
   end
   object Panel3: TPanel
@@ -779,68 +882,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 356
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 10
-    Visible = False
-    object seBaudRate3: TSpinEdit
-      AnchorSideLeft.Control = cbParity3
-      AnchorSideTop.Control = cbParity3
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity3
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity3: TComboBox
-      AnchorSideLeft.Control = Panel3
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label7
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label7: TLabel
+    TabOrder = 13
+    object Label9: TLabel
       AnchorSideLeft.Control = Panel3
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel3
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 3'
     end
     object seID3: TSpinEdit
-      AnchorSideLeft.Control = cbParity3
-      AnchorSideTop.Control = seBaudRate3
+      AnchorSideLeft.Control = Panel3
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label9
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity3
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin3: TSpinEdit
+      AnchorSideLeft.Control = Panel3
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -848,68 +927,37 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin3: TSpinEdit
-      AnchorSideLeft.Control = cbParity3
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity3
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual3: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity3
+      AnchorSideLeft.Control = seMargin3
       AnchorSideTop.Control = seMargin3
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity3
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected3: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity3
-      AnchorSideTop.Control = seID3
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity3
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
       Top = 105
       Width = 115
-      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog3: TCheckListBox
-      AnchorSideLeft.Control = cbParity3
+      AnchorSideLeft.Control = Panel3
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual3
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity3
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -917,20 +965,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal3: TSpinEditEx
-      AnchorSideLeft.Control = cbParity3
+      AnchorSideLeft.Control = clbLog3
       AnchorSideTop.Control = clbLog3
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -941,12 +989,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal3
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -954,29 +1002,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label8: TLabel
+    object Label10: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent3
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent3
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal3: TSpinEditEx
-      AnchorSideLeft.Control = cbParity3
+      AnchorSideLeft.Control = seTimeoutsTotal3
       AnchorSideTop.Control = seTimeoutsTotal3
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -987,43 +1035,104 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal3
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label9: TLabel
+    object Label11: TLabel
       AnchorSideLeft.Control = seCRCErrPercent3
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent3
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages3: TSpinEditEx
-      AnchorSideLeft.Control = cbParity3
-      AnchorSideTop.Control = seCRCErrTotal3
+      AnchorSideLeft.Control = seCRCErrTotal3
+      AnchorSideTop.Control = seOKTotal3
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent3: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal3
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal3: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal3
+      AnchorSideTop.Control = seCRCErrTotal3
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label12: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent3
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected3: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel3
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID3
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
     end
   end
   object Panel4: TPanel
@@ -1033,68 +1142,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 496
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 11
-    Visible = False
-    object seBaudRate4: TSpinEdit
-      AnchorSideLeft.Control = cbParity4
-      AnchorSideTop.Control = cbParity4
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity4
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity4: TComboBox
-      AnchorSideLeft.Control = Panel4
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label10
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label10: TLabel
+    TabOrder = 14
+    object Label13: TLabel
       AnchorSideLeft.Control = Panel4
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel4
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 4'
     end
     object seID4: TSpinEdit
-      AnchorSideLeft.Control = cbParity4
-      AnchorSideTop.Control = seBaudRate4
+      AnchorSideLeft.Control = Panel4
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label13
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity4
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin4: TSpinEdit
+      AnchorSideLeft.Control = Panel4
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -1102,68 +1187,37 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin4: TSpinEdit
-      AnchorSideLeft.Control = cbParity4
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity4
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual4: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity4
+      AnchorSideLeft.Control = seMargin4
       AnchorSideTop.Control = seMargin4
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity4
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected4: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity4
-      AnchorSideTop.Control = seID4
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity4
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
       Top = 105
       Width = 115
-      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog4: TCheckListBox
-      AnchorSideLeft.Control = cbParity4
+      AnchorSideLeft.Control = Panel4
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual4
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity4
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -1171,20 +1225,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal4: TSpinEditEx
-      AnchorSideLeft.Control = cbParity4
+      AnchorSideLeft.Control = clbLog4
       AnchorSideTop.Control = clbLog4
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1195,12 +1249,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal4
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -1208,29 +1262,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label11: TLabel
+    object Label14: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent4
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent4
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal4: TSpinEditEx
-      AnchorSideLeft.Control = cbParity4
+      AnchorSideLeft.Control = seTimeoutsTotal4
       AnchorSideTop.Control = seTimeoutsTotal4
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1241,43 +1295,104 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal4
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label12: TLabel
+    object Label15: TLabel
       AnchorSideLeft.Control = seCRCErrPercent4
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent4
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages4: TSpinEditEx
-      AnchorSideLeft.Control = cbParity4
-      AnchorSideTop.Control = seCRCErrTotal4
+      AnchorSideLeft.Control = seCRCErrTotal4
+      AnchorSideTop.Control = seOKTotal4
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent4: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal4
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal4
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal4: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal4
+      AnchorSideTop.Control = seCRCErrTotal4
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label16: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent4
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent4
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected4: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel4
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID4
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
     end
   end
   object Panel5: TPanel
@@ -1287,68 +1402,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 636
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 12
-    Visible = False
-    object seBaudRate5: TSpinEdit
-      AnchorSideLeft.Control = cbParity5
-      AnchorSideTop.Control = cbParity5
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity5
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity5: TComboBox
-      AnchorSideLeft.Control = Panel5
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label13
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label13: TLabel
+    TabOrder = 15
+    object Label17: TLabel
       AnchorSideLeft.Control = Panel5
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel5
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 5'
     end
     object seID5: TSpinEdit
-      AnchorSideLeft.Control = cbParity5
-      AnchorSideTop.Control = seBaudRate5
+      AnchorSideLeft.Control = Panel5
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label17
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity5
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin5: TSpinEdit
+      AnchorSideLeft.Control = Panel5
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -1356,68 +1447,37 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin5: TSpinEdit
-      AnchorSideLeft.Control = cbParity5
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity5
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual5: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity5
+      AnchorSideLeft.Control = seMargin5
       AnchorSideTop.Control = seMargin5
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity5
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected5: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity5
-      AnchorSideTop.Control = seID5
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity5
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
       Top = 105
       Width = 115
-      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog5: TCheckListBox
-      AnchorSideLeft.Control = cbParity5
+      AnchorSideLeft.Control = Panel5
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual5
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity5
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -1425,20 +1485,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal5: TSpinEditEx
-      AnchorSideLeft.Control = cbParity5
+      AnchorSideLeft.Control = clbLog5
       AnchorSideTop.Control = clbLog5
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1449,12 +1509,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal5
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -1462,29 +1522,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label14: TLabel
+    object Label18: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent5
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent5
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal5: TSpinEditEx
-      AnchorSideLeft.Control = cbParity5
+      AnchorSideLeft.Control = seTimeoutsTotal5
       AnchorSideTop.Control = seTimeoutsTotal5
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1495,43 +1555,104 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal5
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label15: TLabel
+    object Label19: TLabel
       AnchorSideLeft.Control = seCRCErrPercent5
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent5
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages5: TSpinEditEx
-      AnchorSideLeft.Control = cbParity5
-      AnchorSideTop.Control = seCRCErrTotal5
+      AnchorSideLeft.Control = seCRCErrTotal5
+      AnchorSideTop.Control = seOKTotal5
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent5: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal5
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal5
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal5: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal5
+      AnchorSideTop.Control = seCRCErrTotal5
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label20: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent5
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent5
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected5: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel5
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID5
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
     end
   end
   object Panel6: TPanel
@@ -1541,68 +1662,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 776
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 13
-    Visible = False
-    object seBaudRate6: TSpinEdit
-      AnchorSideLeft.Control = cbParity6
-      AnchorSideTop.Control = cbParity6
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity6
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity6: TComboBox
-      AnchorSideLeft.Control = Panel6
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label16
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label16: TLabel
+    TabOrder = 16
+    object Label21: TLabel
       AnchorSideLeft.Control = Panel6
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel6
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 6'
     end
     object seID6: TSpinEdit
-      AnchorSideLeft.Control = cbParity6
-      AnchorSideTop.Control = seBaudRate6
+      AnchorSideLeft.Control = Panel6
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label21
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity6
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin6: TSpinEdit
+      AnchorSideLeft.Control = Panel6
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -1610,68 +1707,37 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin6: TSpinEdit
-      AnchorSideLeft.Control = cbParity6
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity6
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual6: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity6
+      AnchorSideLeft.Control = seMargin6
       AnchorSideTop.Control = seMargin6
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity6
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected6: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity6
-      AnchorSideTop.Control = seID6
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity6
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
       Top = 105
       Width = 115
-      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog6: TCheckListBox
-      AnchorSideLeft.Control = cbParity6
+      AnchorSideLeft.Control = Panel6
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual6
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity6
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -1679,20 +1745,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal6: TSpinEditEx
-      AnchorSideLeft.Control = cbParity6
+      AnchorSideLeft.Control = clbLog6
       AnchorSideTop.Control = clbLog6
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1703,12 +1769,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal6
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -1716,29 +1782,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label17: TLabel
+    object Label22: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent6
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent6
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal6: TSpinEditEx
-      AnchorSideLeft.Control = cbParity6
+      AnchorSideLeft.Control = seTimeoutsTotal6
       AnchorSideTop.Control = seTimeoutsTotal6
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1749,43 +1815,104 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal6
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label18: TLabel
+    object Label23: TLabel
       AnchorSideLeft.Control = seCRCErrPercent6
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent6
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages6: TSpinEditEx
-      AnchorSideLeft.Control = cbParity6
-      AnchorSideTop.Control = seCRCErrTotal6
+      AnchorSideLeft.Control = seCRCErrTotal6
+      AnchorSideTop.Control = seOKTotal6
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent6: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal6
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal6
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal6: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal6
+      AnchorSideTop.Control = seCRCErrTotal6
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label24: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent6
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent6
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected6: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel6
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID6
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
     end
   end
   object Panel7: TPanel
@@ -1795,68 +1922,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 916
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 14
-    Visible = False
-    object seBaudRate7: TSpinEdit
-      AnchorSideLeft.Control = cbParity7
-      AnchorSideTop.Control = cbParity7
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity7
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity7: TComboBox
-      AnchorSideLeft.Control = Panel7
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label19
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label19: TLabel
+    TabOrder = 17
+    object Label25: TLabel
       AnchorSideLeft.Control = Panel7
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel7
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 7'
     end
     object seID7: TSpinEdit
-      AnchorSideLeft.Control = cbParity7
-      AnchorSideTop.Control = seBaudRate7
+      AnchorSideLeft.Control = Panel7
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label25
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity7
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin7: TSpinEdit
+      AnchorSideLeft.Control = Panel7
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -1864,48 +1967,14 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin7: TSpinEdit
-      AnchorSideLeft.Control = cbParity7
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity7
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual7: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity7
+      AnchorSideLeft.Control = seMargin7
       AnchorSideTop.Control = seMargin7
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity7
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected7: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity7
-      AnchorSideTop.Control = seID7
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity7
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -1913,19 +1982,23 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog7: TCheckListBox
-      AnchorSideLeft.Control = cbParity7
+      AnchorSideLeft.Control = Panel7
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual7
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity7
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -1933,20 +2006,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal7: TSpinEditEx
-      AnchorSideLeft.Control = cbParity7
+      AnchorSideLeft.Control = clbLog7
       AnchorSideTop.Control = clbLog7
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -1957,12 +2030,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal7
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -1970,29 +2043,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label20: TLabel
+    object Label26: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent7
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent7
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal7: TSpinEditEx
-      AnchorSideLeft.Control = cbParity7
+      AnchorSideLeft.Control = seTimeoutsTotal7
       AnchorSideTop.Control = seTimeoutsTotal7
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -2003,43 +2076,104 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal7
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label21: TLabel
+    object Label27: TLabel
       AnchorSideLeft.Control = seCRCErrPercent7
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent7
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages7: TSpinEditEx
-      AnchorSideLeft.Control = cbParity7
-      AnchorSideTop.Control = seCRCErrTotal7
+      AnchorSideLeft.Control = seCRCErrTotal7
+      AnchorSideTop.Control = seOKTotal7
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
+    end
+    object seOKPercent7: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal7
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal7
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object seOKTotal7: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal7
+      AnchorSideTop.Control = seCRCErrTotal7
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label28: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent7
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent7
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected7: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel7
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID7
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
     end
   end
   object Panel8: TPanel
@@ -2049,68 +2183,44 @@ object MainF: TMainF
     AnchorSideBottom.Control = pCaptions
     AnchorSideBottom.Side = asrBottom
     Left = 1056
-    Height = 440
-    Top = 104
+    Height = 411
+    Top = 117
     Width = 140
     Anchors = [akTop, akLeft, akBottom]
-    ClientHeight = 440
+    ClientHeight = 411
     ClientWidth = 140
     ParentBackground = False
-    TabOrder = 15
-    Visible = False
-    object seBaudRate8: TSpinEdit
-      AnchorSideLeft.Control = cbParity8
-      AnchorSideTop.Control = cbParity8
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity8
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 51
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      Value = 9600
-    end
-    object cbParity8: TComboBox
-      AnchorSideLeft.Control = Panel8
-      AnchorSideLeft.Side = asrCenter
-      AnchorSideTop.Control = Label22
-      AnchorSideTop.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 24
-      Width = 115
-      BorderSpacing.Top = 4
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        'None'
-        'Odd'
-        'Even'
-        'Mark'
-        'Space'
-      )
-      TabOrder = 1
-      Text = 'None'
-    end
-    object Label22: TLabel
+    TabOrder = 18
+    object Label29: TLabel
       AnchorSideLeft.Control = Panel8
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel8
-      Left = 44
+      Left = 48
       Height = 15
       Top = 5
-      Width = 53
+      Width = 44
       BorderSpacing.Top = 4
-      Caption = 'Прибор 2'
+      Caption = 'Device 8'
     end
     object seID8: TSpinEdit
-      AnchorSideLeft.Control = cbParity8
-      AnchorSideTop.Control = seBaudRate8
+      AnchorSideLeft.Control = Panel8
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label29
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity8
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 23
+      Top = 24
+      Width = 116
+      BorderSpacing.Top = 4
+      MaxValue = 255
+      TabOrder = 0
+      Value = 1
+    end
+    object seMargin8: TSpinEdit
+      AnchorSideLeft.Control = Panel8
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
@@ -2118,68 +2228,37 @@ object MainF: TMainF
       Width = 115
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
-      MaxValue = 255
-      TabOrder = 2
-      Value = 1
-    end
-    object seMargin8: TSpinEdit
-      AnchorSideLeft.Control = cbParity8
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity8
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 132
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      TabOrder = 3
+      MaxValue = 100
+      TabOrder = 1
       Value = 5
     end
     object seActual8: TFloatSpinEditEx
-      AnchorSideLeft.Control = cbParity8
+      AnchorSideLeft.Control = seMargin8
       AnchorSideTop.Control = seMargin8
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity8
-      AnchorSideRight.Side = asrBottom
-      Left = 13
-      Height = 23
-      Top = 159
-      Width = 115
-      Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Top = 4
-      DirectInput = False
-      MaxLength = 0
-      TabOrder = 4
-      DecimalSeparator = ','
-      DecimalPlaces = 1
-      UpDownVisible = False
-    end
-    object seExpected8: TFloatSpinEdit
-      AnchorSideLeft.Control = cbParity8
-      AnchorSideTop.Control = seID8
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity8
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 23
       Top = 105
       Width = 115
-      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 2
+      DecimalSeparator = ','
       DecimalPlaces = 1
-      TabOrder = 5
-      Value = 20
+      UpDownVisible = False
+      DisplayMode = dmAuto
     end
     object clbLog8: TCheckListBox
-      AnchorSideLeft.Control = cbParity8
+      AnchorSideLeft.Control = Panel8
+      AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = seActual8
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = cbParity8
       AnchorSideRight.Side = asrBottom
       Left = 13
       Height = 154
-      Top = 190
+      Top = 136
       Width = 115
       AllowGrayed = True
       Anchors = [akTop, akLeft, akRight]
@@ -2187,20 +2266,20 @@ object MainF: TMainF
       ExtendedSelect = False
       ItemHeight = 0
       MultiSelect = True
-      TabOrder = 6
+      TabOrder = 3
     end
     object seTimeoutsTotal8: TSpinEditEx
-      AnchorSideLeft.Control = cbParity8
+      AnchorSideLeft.Control = clbLog8
       AnchorSideTop.Control = clbLog8
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 348
+      Top = 294
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 4
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -2211,12 +2290,12 @@ object MainF: TMainF
       AnchorSideTop.Control = seTimeoutsTotal8
       Left = 100
       Height = 23
-      Top = 348
+      Top = 294
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 5
       Increment = 0
       MaxValue = 100
       MinRepeatValue = 0
@@ -2224,29 +2303,29 @@ object MainF: TMainF
       UpDownVisible = False
       Value = 0
     end
-    object Label23: TLabel
+    object Label30: TLabel
       AnchorSideLeft.Control = seTimeoutsPercent8
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seTimeoutsPercent8
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 352
+      Top = 298
       Width = 10
       Caption = '%'
     end
     object seCRCErrTotal8: TSpinEditEx
-      AnchorSideLeft.Control = cbParity8
+      AnchorSideLeft.Control = seTimeoutsTotal8
       AnchorSideTop.Control = seTimeoutsTotal8
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 375
+      Top = 321
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 6
       NullValue = 0
       UpDownVisible = False
       Value = 0
@@ -2257,56 +2336,142 @@ object MainF: TMainF
       AnchorSideTop.Control = seCRCErrTotal8
       Left = 100
       Height = 23
-      Top = 375
+      Top = 321
       Width = 29
       BorderSpacing.Left = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 7
       MaxValue = 100
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-    object Label24: TLabel
+    object Label31: TLabel
       AnchorSideLeft.Control = seCRCErrPercent8
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = seCRCErrPercent8
       AnchorSideTop.Side = asrCenter
       Left = 129
       Height = 15
-      Top = 379
+      Top = 325
       Width = 10
       Caption = '%'
     end
     object seTotalMessages8: TSpinEditEx
-      AnchorSideLeft.Control = cbParity8
-      AnchorSideTop.Control = seCRCErrTotal8
+      AnchorSideLeft.Control = seCRCErrTotal8
+      AnchorSideTop.Control = seOKTotal8
       AnchorSideTop.Side = asrBottom
       Left = 13
       Height = 23
-      Top = 402
+      Top = 375
       Width = 83
       BorderSpacing.Top = 4
       DirectInput = False
       MaxLength = 0
-      TabOrder = 11
+      TabOrder = 8
       NullValue = 0
       UpDownVisible = False
       Value = 0
     end
-  end
-  object MainMenu: TMainMenu
-    Left = 632
-    Top = 8
-    object About: TMenuItem
-      Caption = 'Справка'
+    object seOKPercent8: TSpinEditEx
+      AnchorSideLeft.Control = seOKTotal8
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKTotal8
+      Left = 100
+      Height = 23
+      Top = 348
+      Width = 29
+      BorderSpacing.Left = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 9
+      MaxValue = 100
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
     end
+    object seOKTotal8: TSpinEditEx
+      AnchorSideLeft.Control = seTimeoutsTotal8
+      AnchorSideTop.Control = seCRCErrTotal8
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 348
+      Width = 83
+      BorderSpacing.Top = 4
+      DirectInput = False
+      MaxLength = 0
+      TabOrder = 10
+      NullValue = 0
+      UpDownVisible = False
+      Value = 0
+    end
+    object Label32: TLabel
+      AnchorSideLeft.Control = seCRCErrPercent8
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seOKPercent8
+      AnchorSideTop.Side = asrCenter
+      Left = 129
+      Height = 15
+      Top = 352
+      Width = 10
+      Caption = '%'
+    end
+    object seExpected8: TFloatSpinEditEx
+      AnchorSideLeft.Control = Panel8
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seID8
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 51
+      Width = 115
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 4
+      MaxLength = 0
+      TabOrder = 11
+      DecimalPlaces = 1
+      DisplayMode = dmAuto
+    end
+  end
+  object bSaveState: TButton
+    AnchorSideLeft.Control = bDisconnect
+    AnchorSideTop.Control = tbQuery
+    Left = 499
+    Height = 25
+    Top = 86
+    Width = 96
+    Caption = 'Save Profile'
+    TabOrder = 19
+    OnClick = bSaveStateClick
+  end
+  object bLoadState: TButton
+    AnchorSideLeft.Control = bSaveState
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = bSaveState
+    Left = 603
+    Height = 25
+    Top = 86
+    Width = 96
+    BorderSpacing.Left = 8
+    Caption = 'Load Profile'
+    TabOrder = 20
+    OnClick = bLoadStateClick
   end
   object tQuery: TTimer
     Enabled = False
     OnTimer = tQueryTimer
-    Left = 672
-    Top = 8
+    Left = 288
+    Top = 72
+  end
+  object OpenDialog: TOpenDialog
+    Left = 704
+    Top = 72
+  end
+  object SaveDialog: TSaveDialog
+    Left = 464
+    Top = 72
   end
 end

@@ -10,16 +10,17 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, lazcontrols, datetimectrls, MainForm
-  { you can add units after this };
+  Forms,
+  lazcontrols,
+  datetimectrls,
+  MainForm { you can add units after this };
 
-{$R *.res}
+  {$R *.res}
 
 begin
-  RequireDerivedFormResource:=True;
-  Application.Scaled:=True;
+  RequireDerivedFormResource := True;
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainF, MainF);
   Application.Run;
 end.
-

@@ -6,9 +6,9 @@ interface
 
 uses
   Classes, SysUtils, DateUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Math, Menus, ExtCtrls, ComCtrls, Spin, EditBtn, Buttons, ButtonPanel, ActnList,
-  ComboEx, CheckLst, synaser, StrUtils, LConvEncoding, SpinEx, CheckBoxThemed,
-  DateTimePicker;
+  Math, Menus, ExtCtrls, ComCtrls, Spin, Buttons,
+  ActnList, CheckLst, synaser, StrUtils, LConvEncoding,
+  SpinEx, DateTimePicker, jsonconf;
 
 procedure WriteProgramLog(Log: string; Force: boolean = False);
 procedure WriteProgramLog(i: longint; Force: boolean = False);
@@ -24,62 +24,22 @@ function vald(s: string): double;
 
 type
 
-  //TMyThread = class(TThread)
-  //private
-  //  fStatusText : string;
-  //  procedure ShowStatus;
-  //protected
-  //  procedure Execute; override;
-  //public
-  //  Constructor Create(CreateSuspended : boolean);
-  //end;
-
-  //constructor TMyThread.Create(CreateSuspended : boolean);
-  //begin
-  //  inherited Create(CreateSuspended);
-  //  FreeOnTerminate := True;
-  //end;
-
-  //procedure TMyThread.ShowStatus;
-  //// this method is executed by the mainthread and can therefore access all GUI elements.
-  //begin
-  //  Form1.Caption := fStatusText;
-  //end;
-
-  //procedure TMyThread.Execute;
-  //var
-  //  newStatus : string;
-  //begin
-  //  fStatusText := 'TMyThread Starting...';
-  //  Synchronize(@Showstatus);
-  //  fStatusText := 'TMyThread Running...';
-  //  while (not Terminated) and ([any condition required]) do
-  //    begin
-  //      ...
-  //      [here goes the code of the main thread loop]
-  //      ...
-  //      if NewStatus <> fStatusText then
-  //        begin
-  //          fStatusText := newStatus;
-  //          Synchronize(@Showstatus);
-  //        end;
-  //    end;
-  //end;
+  TDataResult = record
+    errorcode: integer;
+    intresult: integer;
+    floatresult: double;
+  end;
 
   { TMainF }
 
   TMainF = class(TForm)
     bConnect: TButton;
     bDisconnect: TButton;
-    cbParity2: TComboBox;
-    cbParity3: TComboBox;
-    cbParity4: TComboBox;
-    cbParity5: TComboBox;
-    cbParity6: TComboBox;
-    cbParity7: TComboBox;
-    cbParity8: TComboBox;
+    bRescan: TButton;
+    bSaveState: TButton;
+    bLoadState: TButton;
+    cbParity: TComboBox;
     cbPortSelect: TComboBox;
-    cbParity1: TComboBox;
     clbLog1: TCheckListBox;
     clbLog2: TCheckListBox;
     clbLog3: TCheckListBox;
@@ -88,6 +48,7 @@ type
     clbLog6: TCheckListBox;
     clbLog7: TCheckListBox;
     clbLog8: TCheckListBox;
+    iBaudRate: TLabel;
     Label10: TLabel;
     Label11: TLabel;
     Label12: TLabel;
@@ -104,18 +65,31 @@ type
     Label22: TLabel;
     Label23: TLabel;
     Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
     Label3: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    lInterval: TLabel;
+    lPort: TLabel;
     lActual: TLabel;
+    lParity: TLabel;
     lTotalMessages: TLabel;
     lLog: TLabel;
     lTimeouts: TLabel;
     lCRCErr: TLabel;
+    lOK: TLabel;
+    OpenDialog: TOpenDialog;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -123,16 +97,13 @@ type
     Panel6: TPanel;
     Panel7: TPanel;
     Panel8: TPanel;
+    SaveDialog: TSaveDialog;
     seActual1: TFloatSpinEditEx;
-    iBaudRate: TLabel;
     iDeviceID: TLabel;
     iExpectedValue: TLabel;
     lMargin: TLabel;
     Label1: TLabel;
-    lParity: TLabel;
-    lParity1: TLabel;
-    MainMenu: TMainMenu;
-    About: TMenuItem;
+    lDeviceNum: TLabel;
     Panel1: TPanel;
     pCaptions: TPanel;
     seActual2: TFloatSpinEditEx;
@@ -142,13 +113,7 @@ type
     seActual6: TFloatSpinEditEx;
     seActual7: TFloatSpinEditEx;
     seActual8: TFloatSpinEditEx;
-    seBaudRate2: TSpinEdit;
-    seBaudRate3: TSpinEdit;
-    seBaudRate4: TSpinEdit;
-    seBaudRate5: TSpinEdit;
-    seBaudRate6: TSpinEdit;
-    seBaudRate7: TSpinEdit;
-    seBaudRate8: TSpinEdit;
+    seBaudRate: TSpinEdit;
     seCRCErrPercent2: TSpinEditEx;
     seCRCErrPercent3: TSpinEditEx;
     seCRCErrPercent4: TSpinEditEx;
@@ -163,13 +128,14 @@ type
     seCRCErrTotal6: TSpinEditEx;
     seCRCErrTotal7: TSpinEditEx;
     seCRCErrTotal8: TSpinEditEx;
-    seExpected2: TFloatSpinEdit;
-    seExpected3: TFloatSpinEdit;
-    seExpected4: TFloatSpinEdit;
-    seExpected5: TFloatSpinEdit;
-    seExpected6: TFloatSpinEdit;
-    seExpected7: TFloatSpinEdit;
-    seExpected8: TFloatSpinEdit;
+    seExpected1: TFloatSpinEditEx;
+    seExpected2: TFloatSpinEditEx;
+    seExpected3: TFloatSpinEditEx;
+    seExpected4: TFloatSpinEditEx;
+    seExpected5: TFloatSpinEditEx;
+    seExpected6: TFloatSpinEditEx;
+    seExpected7: TFloatSpinEditEx;
+    seExpected8: TFloatSpinEditEx;
     seID2: TSpinEdit;
     seID3: TSpinEdit;
     seID4: TSpinEdit;
@@ -184,6 +150,22 @@ type
     seMargin6: TSpinEdit;
     seMargin7: TSpinEdit;
     seMargin8: TSpinEdit;
+    seOKPercent1: TSpinEditEx;
+    seOKPercent2: TSpinEditEx;
+    seOKPercent3: TSpinEditEx;
+    seOKPercent4: TSpinEditEx;
+    seOKPercent5: TSpinEditEx;
+    seOKPercent6: TSpinEditEx;
+    seOKPercent7: TSpinEditEx;
+    seOKPercent8: TSpinEditEx;
+    seOKTotal1: TSpinEditEx;
+    seOKTotal2: TSpinEditEx;
+    seOKTotal3: TSpinEditEx;
+    seOKTotal4: TSpinEditEx;
+    seOKTotal5: TSpinEditEx;
+    seOKTotal6: TSpinEditEx;
+    seOKTotal7: TSpinEditEx;
+    seOKTotal8: TSpinEditEx;
     seTimeoutsPercent2: TSpinEditEx;
     seTimeoutsPercent3: TSpinEditEx;
     seTimeoutsPercent4: TSpinEditEx;
@@ -199,11 +181,9 @@ type
     seTimeoutsTotal7: TSpinEditEx;
     seTimeoutsTotal8: TSpinEditEx;
     seTotalMessages1: TSpinEditEx;
-    seExpected1: TFloatSpinEdit;
     seMargin1: TSpinEdit;
     seID1: TSpinEdit;
     seNumDevices: TSpinEdit;
-    seBaudRate1: TSpinEdit;
     seCRCErrPercent1: TSpinEditEx;
     seTimeoutsTotal1: TSpinEditEx;
     seTimeoutsPercent1: TSpinEditEx;
@@ -220,7 +200,10 @@ type
     tQuery: TTimer;
     tbQuery: TToggleBox;
     procedure bConnectClick(Sender: TObject);
+    procedure bLoadStateClick(Sender: TObject);
+    procedure bRescanClick(Sender: TObject);
     procedure bDisconnectClick(Sender: TObject);
+    procedure bSaveStateClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     function ConnectSerial: longint;
     procedure seNumDevicesChange(Sender: TObject);
@@ -228,15 +211,32 @@ type
     procedure teQueryIntervalChange(Sender: TObject);
     procedure tQueryTimer(Sender: TObject);
     procedure sendByteCRC16(var CRC: word; Data: byte);
+    procedure checkByteCRC16(var CRC: word; Data: byte);
     procedure sendCommand(deviceID, ModBusCode: byte; opCode, numRegisters: word);
 
-    function getDeviceData(id: byte): word;
+    function getDeviceData(id: byte; device: integer): tDataResult;
     function withinMargin(expected, actual: double; margin: integer): boolean;
+    procedure resetStats();
   private
     TestResult: string;
     SerPort: tBlockSerial;
     timeoutCount: longword;
     CRCErrorCount: longword;
+    queryStart: TDateTime;
+
+    aPanel: array [1..8] of tPanel;
+    aID: array [1..8] of TSpinEdit;
+    aExpected: array [1..8] of TFloatSpinEditEx;
+    aMargin: array [1..8] of TSpinEdit;
+    aActual: array [1..8] of TFloatSpinEditEx;
+    aLog: array [1..8] of TCheckListBox;
+    aTimeoutsTotal: array [1..8] of TSpinEditEx;
+    aTimeoutsPercent: array [1..8] of TSpinEditEx;
+    aCRCErrorTotal: array [1..8] of TSpinEditEx;
+    aCRCErrorPercent: array [1..8] of TSpinEditEx;
+    aOKTotal: array [1..8] of TSpinEditEx;
+    aOKPercent: array [1..8] of TSpinEditEx;
+    aMessagesTotal: array [1..8] of TSpinEditEx;
 
   public
 
@@ -247,6 +247,7 @@ const
   spDevice = 1;
   spTimeOuts = 2;
   spCRCErrors = 3;
+  spTime = 4;
 
 var
   MainF: TMainF;
@@ -314,45 +315,71 @@ end;
 
 procedure TMainF.FormCreate(Sender: TObject);
 var
-  p: integer;
+  i: integer;
+  c: TComponent;
 begin
-  PortList := GetSerialPortNames;
+  for i := 1 to 8 do
+  begin
+    c := findcomponent('Panel' + IntToStr(i));
+    aPanel[i] := TPanel(c);
+    c := findcomponent('seID' + IntToStr(i));
+    aID[i] := TSpinEdit(c);
+    c := findcomponent('seExpected' + IntToStr(i));
+    aExpected[i] := TFloatSpinEditEx(c);
+    c := findcomponent('seMargin' + IntToStr(i));
+    aMargin[i] := TSpinEdit(c);
+    c := findcomponent('seActual' + IntToStr(i));
+    aActual[i] := TFloatSpinEditEX(c);
+    c := findcomponent('clbLog' + IntToStr(i));
+    aLog[i] := TCheckListBox(c);
+    c := findcomponent('seTimeoutsTotal' + IntToStr(i));
+    aTimeoutsTotal[i] := TSpinEditEX(c);
+    c := findcomponent('seTimeoutsPercent' + IntToStr(i));
+    aTimeoutsPercent[i] := TSpinEditEX(c);
+    c := findcomponent('seCRCERRTotal' + IntToStr(i));
+    aCRCErrorTotal[i] := TSpinEditEX(c);
+    c := findcomponent('seCRCErrPercent' + IntToStr(i));
+    aCRCErrorPercent[i] := TSpinEditEX(c);
+    c := findcomponent('seOKTotal' + IntToStr(i));
+    aOKTotal[i] := TSpinEditEX(c);
+    c := findcomponent('seOKPercent' + IntToStr(i));
+    aOKPercent[i] := TSpinEditEX(c);
+    c := findcomponent('seTotalMessages' + IntToStr(i));
+    aMessagesTotal[i] := TSpinEditEX(c);
+  end;
+
   SerPort := TBlockSerial.Create;
   SerPort.DeadLockTimeOut := 4000;
 
-  PortCount := 0;
+  bRescanClick(Sender);
 
-  if IsEmptyStr(PortList, [' ']) then
-    StatusBar.Panels[spConnection].Text := 'Нет доступных COM-портов'
-  else
-  begin
-    p := pos(',', PortList);
-    if p = 0 then cbPortSelect.AddItem(PortList, nil)
-    else
-    begin
-      while p <> 0 do
-      begin
-        cbPortSelect.AddItem(copy(PortList, 1, p - 1), nil);
-        Delete(PortList, 1, p);
-        Inc(PortCount);
-        p := pos(',', PortList);
-      end;
-      cbPortSelect.AddItem(PortList, nil);
-      Inc(PortCount);
-    end;
-  end;
-  Inc(PortCount);
-  cbPortSelect.ItemIndex := 0;
+  seNumDevices.OnChange(Sender);
 end;
 
 procedure TMainF.tbQueryChange(Sender: TObject);
+var
+  i: integer;
 begin
   teQueryInterval.OnChange(Sender);
   tQuery.Enabled := tbQuery.Checked;
   if tbQuery.Checked then
-    tbQuery.Caption := 'Query ON'
+  begin
+    tbQuery.Caption := 'Query is ON';
+    resetStats;
+    for i := 1 to 8 do
+      aPanel[i].Enabled := False;
+    seNumDevices.Enabled := False;
+    bLoadState.Enabled := False;
+    queryStart := now;
+  end
   else
-    tbQuery.Caption := 'Query OFF';
+  begin
+    tbQuery.Caption := 'Query is OFF';
+    for i := 1 to 8 do
+      aPanel[i].Enabled := True;
+    seNumDevices.Enabled := True;
+    bLoadState.Enabled := True;
+  end;
 end;
 
 procedure TMainF.teQueryIntervalChange(Sender: TObject);
@@ -362,23 +389,73 @@ end;
 
 procedure TMainF.tQueryTimer(Sender: TObject);
 var
-  Value: word;
-  float: double;
+  Result: tDataResult;
+  marginOk: boolean;
+  i: integer;
+  time: string;
 begin
   if SerPort.InstanceActive then
   begin
-    Value := getDeviceData(byte(seID1.Value));
-    float := double(Value) / 10;
-    seActual1.Value := float;
-    clbLog1.AddItem(FloatToStrf(float, ffFixed, 2, 2), nil);
+    for i := 1 to seNumDevices.Value do
+    begin
+      Result := getDeviceData(byte(aID[i].Value), i);
 
-    clbLog1.Checked[clbLog1.Count - 1] :=
-      withinMargin(seExpected1.Value, seActual1.Value, seMargin1.Value);
-    clbLog1.TopIndex := clbLog1.Count - 1;
+      if Result.errorcode = 0 then
+      begin
+        case IntToStr(aID[i].Value)[1] of
+          '1': aActual[i].Value := Result.intresult / 100;
+          '2': aActual[i].Value := Result.floatresult;
+          '3': aActual[i].Value := Result.intresult;
+          '4': aActual[i].Value := Result.floatresult;
+          '5': aActual[i].Value := Result.intresult / 100;
+          '6': aActual[i].Value := Result.intresult;
+          else
+            StatusBar.Panels[spDevice].Text :=
+              'Device ID ' + IntToStr(i) + 'indicates unsupported data type';
+        end;
+
+        time := FormatDateTime('hh:nn:ss', now);
+        aLog[i].AddItem(FloatToStrf(aActual[i].Value, ffGeneral, 3, 3) +
+          ' @ ' + time, nil);
+
+        marginOk := withinMargin(aExpected[i].Value, aActual[i].Value, aMargin[i].Value);
+
+        aLog[i].Checked[aLog[i].Count - 1] := marginOk;
+        aLog[i].TopIndex := aLog[i].Count - 1;
+
+        if marginOk then
+          aOKTotal[i].Value := aOKTotal[i].Value + 1;
+        aOKPercent[i].Value := round(aOKTotal[i].Value / aMessagesTotal[i].Value * 100);
+        if aOKPercent[i].Value <> 100 then
+          aOKPercent[i].Color := clYellow
+        else
+          aOKPercent[i].Color := clLime;
+
+        sleep(100);
+        Application.ProcessMessages;
+      end;
+    end;
+    StatusBar.Panels[spTime].Text := FormatDateTime('hh:nn:ss', now - queryStart);
   end;
 end;
 
+function wordToFloat(raw: word): double;
+var
+  p, k, n: word;
+begin
+  p := %1000000000000000 and raw shr 15;
+  k := %0111000000000000 and raw shr 12;
+  n := %0000111111111111 and raw;
+  Result := n * intpower(10, (-2 * p + 1) * k);
+end;
+
 procedure TMainF.sendByteCRC16(var CRC: word; Data: byte);
+begin
+  checkByteCRC16(crc, Data);
+  SerPort.SendByte(Data);
+end;
+
+procedure TMainF.checkByteCRC16(var CRC: word; Data: byte);
 var
   I: integer;
 begin
@@ -390,8 +467,6 @@ begin
     else
       CRC := CRC shr 1;
   end;
-  //showmessage(inttohex(data));
-  SerPort.SendByte(Data);
 end;
 
 procedure TMainF.sendCommand(deviceID, ModBusCode: byte; opCode, numRegisters: word);
@@ -409,74 +484,118 @@ begin
   SerPort.SendByte(hi(crc));
 end;
 
-function TMainF.getDeviceData(id: byte): word;
+
+
+function TMainF.getDeviceData(id: byte; device: integer): tDataResult;
 var
   Count: integer;
   buf: array [0..128] of byte;
+  crc: word;
+  i: integer;
 begin
   StatusBar.Panels[spDevice].Text := 'Quering device ID: ' + IntToStr(id);
   StatusBar.Update;
   SerPort.RaiseExcept := False;
-  seTotalMessages1.Value := seTotalMessages1.Value + 1;
+  aMessagesTotal[device].Value := aMessagesTotal[device].Value + 1;
 
-  sendCommand(byte(ID), $03, $0800, $001A);
+  Result.errorcode := 0;
+
+  sendCommand(id, $03, $0800, $001A);
   Count := serport.RecvBufferEx(@buf[0], 31, 500);
 
   if Count = 31 then
-    Result := (buf[12] or buf[11] shl 8)
+  begin
+    crc := $FFFF;
+    for i := 0 to 28 do
+      checkByteCRC16(crc, buf[i]);
+    if crc = (buf[29] or buf[30] shl 8) then
+    begin
+      Result.intresult := (buf[12] or buf[11] shl 8);
+      Result.floatresult := wordToFloat(Result.intresult);
+    end
+    else
+    begin
+      Inc(crcerrorcount);
+      aCRCErrorTotal[device].Value := aCRCErrorTotal[device].Value + 1;
+      Result.errorcode := -1;
+
+      StatusBar.Panels[spCRCErrors].Text := 'CRC errors: ' + IntToStr(timeoutCount);
+      StatusBar.Update;
+    end;
+  end
   else
   begin
     Inc(timeoutCount);
-    seTimeoutsTotal1.Value := seTimeoutsTotal1.Value + 1;
+    aTimeoutsTotal[device].Value := aTimeoutsTotal[device].Value + 1;
+    Result.errorcode := -2;
 
     StatusBar.Panels[spTimeouts].Text := 'Timeouts: ' + IntToStr(timeoutCount);
     StatusBar.Update;
-    Result := 0;
   end;
   //Math.SetRoundMode(rmUp);
-  seTimeoutsPercent1.Value := round(seTimeoutsTotal1.Value / seTotalMessages1.Value * 100);
-  SerPort.RaiseExcept := True;
+  aTimeoutsPercent[device].Value :=
+    round(aTimeoutsTotal[device].Value / aMessagesTotal[device].Value * 100);
   StatusBar.Panels[spDevice].Text := '';
   StatusBar.Update;
 end;
 
 function TMainF.withinMargin(expected, actual: double; margin: integer): boolean;
 begin
-  Result := abs(expected - actual) < expected * (margin * 0.01);
+  Result := abs(expected - actual) <= expected * (margin * 0.01);
+end;
+
+procedure TMainF.resetStats();
+var
+  i: integer;
+begin
+  for i := 1 to 8 do
+  begin
+    aLog[i].Clear;
+    aActual[i].Value := 0;
+    aTimeoutsTotal[i].Value := 0;
+    aTimeoutsPercent[i].Value := 0;
+    aCRCErrorTotal[i].Value := 0;
+    aCRCErrorPercent[i].Value := 0;
+    aOKTotal[i].Value := 0;
+    aOKPercent[i].Value := 0;
+    aMessagesTotal[i].Value := 0;
+  end;
+  StatusBar.Panels[spTime].Text := '00:00:00';
+  StatusBar.Panels[spTimeOuts].Text := '';
+  StatusBar.Panels[spCRCErrors].Text := '';
+  timeoutCount := 0;
+  CRCErrorCount := 0;
+  aOKPercent[i].Color := clWindow;
 end;
 
 function TMainF.ConnectSerial: longint;
 var
   Parity: char;
-  i, ID, Count: integer;
+  i: integer;
 
   s: string;
-  ast: ansistring;
   enc: boolean;
-  ts: TStream;
 begin
   //WriteProgramLog('Подключение...');
 
-  //SerPort.RaiseExcept:= true;
   //SerPort.TestDsr:= true;
   try
     s := cbPortSelect.Text;
     SerPort.Connect(s);
-    sleep(500);
+    sleep(100);
     if SerPort.LastError = 0 then
     begin
       for i := 1 to seNumDevices.Value do
       begin
-        ID := seID1.Value;
         //SerPort.RaiseExcept:= false;   //because this resets in recvstring
 
-        s := 'Попытка подключения к ' + cbPortSelect.Text;
+        s := 'Connecting to ' + cbPortSelect.Text;
         StatusBar.Panels[spConnection].Text := s;
         StatusBar.Update;
         //WriteProgramLog(s);
-        Parity := cbParity1.Text[1];
-        SerPort.Config(seBaudRate1.Value, 8, Parity, SB2, False, False);
-        sleep(500);
+        Parity := cbParity.Text[1];
+        SerPort.Config(seBaudRate.Value, 8, Parity, SB2, False, False);
+        sleep(100);
       end;
     end
     else
@@ -487,17 +606,8 @@ begin
     if SerPort.InstanceActive and (Result = 0) then
     begin
       StatusBar.Panels[spConnection].Text :=
-        'Подключено к ' + cbPortSelect.Text;
+        'Connected to ' + cbPortSelect.Text;
       Result := 0;
-      //TimeOutErrors:= 0;
-      //EnableControls(true);
-
-      SerPort.RaiseExcept := True;
-
-      //case Config.OnConnect of
-      //  AQuery: btQueryClick(Self);
-      //  AReset: btResetClick(Self);
-      //end;
     end
     else
     begin
@@ -543,20 +653,19 @@ end;
 
 procedure TMainF.seNumDevicesChange(Sender: TObject);
 begin
-     Panel2.Visible:= seNumDevices.Value > 1;
-     Panel3.Visible:= seNumDevices.Value > 2;
-     Panel4.Visible:= seNumDevices.Value > 3;
-     Panel5.Visible:= seNumDevices.Value > 4;
-     Panel6.Visible:= seNumDevices.Value > 5;
-     Panel7.Visible:= seNumDevices.Value > 6;
-     Panel8.Visible:= seNumDevices.Value > 7;
-     Width:= 780 + Panel1.Width * (seNumDevices.Value -5)
+  Panel2.Visible := seNumDevices.Value > 1;
+  Panel3.Visible := seNumDevices.Value > 2;
+  Panel4.Visible := seNumDevices.Value > 3;
+  Panel5.Visible := seNumDevices.Value > 4;
+  Panel6.Visible := seNumDevices.Value > 5;
+  Panel7.Visible := seNumDevices.Value > 6;
+  Panel8.Visible := seNumDevices.Value > 7;
+  Width := 780 + Panel1.Width * (seNumDevices.Value - 5);
 end;
 
 procedure TMainF.bConnectClick(Sender: TObject);
 var
   Result: integer;
-  Crutch: integer absolute Result;
 begin
   //SetCursorAll(crHourGlass);
 
@@ -577,7 +686,41 @@ begin
   //SetCursorAll(crDefault);
 end;
 
+
+procedure TMainF.bRescanClick(Sender: TObject);
+var
+  p: integer;
+begin
+  PortList := GetSerialPortNames;
+  PortCount := 0;
+
+  if IsEmptyStr(PortList, [' ']) then
+    StatusBar.Panels[spConnection].Text := 'No available COM-ports'
+  else
+  begin
+    StatusBar.Panels[spConnection].Text := '';
+    p := pos(',', PortList);
+    if p = 0 then cbPortSelect.AddItem(PortList, nil)
+    else
+    begin
+      while p <> 0 do
+      begin
+        cbPortSelect.AddItem(copy(PortList, 1, p - 1), nil);
+        Delete(PortList, 1, p);
+        Inc(PortCount);
+        p := pos(',', PortList);
+      end;
+      cbPortSelect.AddItem(PortList, nil);
+      Inc(PortCount);
+    end;
+  end;
+  Inc(PortCount);
+  cbPortSelect.ItemIndex := 0;
+end;
+
 procedure TMainF.bDisconnectClick(Sender: TObject);
+var
+  i: integer;
 begin
   tQuery.Enabled := False;
   if assigned(SerPort) then
@@ -587,7 +730,7 @@ begin
       SerPort.Purge;
       SerPort.CloseSocket;
     end;
-    clbLog1.Clear;
+    resetStats;
     //freeandnil(SerPort);
   end;
   bConnect.Enabled := True;
@@ -595,5 +738,80 @@ begin
   tbQuery.Enabled := False;
   tbQuery.Checked := False;
 end;
+
+procedure TMainF.bSaveStateClick(Sender: TObject);
+var
+  i: integer;
+  c: TJsonConfig;
+begin
+  if not SaveDialog.Execute then
+    exit;
+
+  c:= TJSONConfig.Create(Nil);
+  try
+    //try/except to handle broken json file
+    try
+      c.Formatted:= true;
+      c.Filename:= SaveDialog.Filename;
+    except
+      exit;
+    end;
+
+    c.SetValue(UTF8Decode('/parity/itemindex'), cbParity.ItemIndex);
+    c.SetValue(UTF8Decode('/baudrate/value'), seBaudRate.Value);
+    c.SetValue(UTF8Decode('/numdevices/value'), seNumDevices.Value);
+    c.SetValue(UTF8Decode('/queryinterval/value'), teQueryInterval.Time);
+
+    for i := 1 to 8 do
+    begin
+      c.SetValue(UTF8Decode('/id/' + inttostr(i) + '/value'), aID[i].Value);
+      c.SetValue(UTF8Decode('/expected/' + inttostr(i) + '/value'), aExpected[i].Value);
+      c.SetValue(UTF8Decode('/margin/' + inttostr(i) + '/value'), aMargin[i].Value);
+    end;
+
+  finally
+    c.Free;
+  end;
+end;
+
+
+procedure TMainF.bLoadStateClick(Sender: TObject);
+var
+  i: integer;
+  c: TJsonConfig;
+begin
+  if not OpenDialog.Execute then
+    exit;
+  if not fileExists(OpenDialog.Filename) then
+    exit;
+
+  c:= TJSONConfig.Create(Nil);
+  try
+    //try/except to handle broken json file
+    try
+      c.Formatted:= true;
+      c.Filename:= OpenDialog.Filename;
+    except
+      exit;
+    end;
+
+    cbParity.ItemIndex:= c.GetValue(UTF8Decode('/parity/itemindex'), cbParity.ItemIndex);
+    seBaudRate.Value:= c.GetValue(UTF8Decode('/baudrate/value'), seBaudRate.Value);
+    seNumDevices.Value:= c.GetValue(UTF8Decode('/numdevices/value'), seNumDevices.Value);
+    teQueryInterval.Time:= c.GetValue(UTF8Decode('/queryinterval/value'), teQueryInterval.Time);
+
+    for i := 1 to 8 do
+    begin
+      aID[i].Value:= c.GetValue(UTF8Decode('/id/' + inttostr(i) + '/value'), aID[i].Value);
+      aExpected[i].Value:= c.GetValue(UTF8Decode('/expected/' + inttostr(i) + '/value'), aExpected[i].Value);
+      aMargin[i].Value:= c.GetValue(UTF8Decode('/margin/' + inttostr(i) + '/value'), aMargin[i].Value);
+    end;
+  finally
+    c.Free;
+  end;
+  seNumDevices.OnChange(Sender);
+  teQueryInterval.OnChange(Sender);
+end;
+
 
 end.

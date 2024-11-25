@@ -20,8 +20,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainForm"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="755"/>
-        <CursorPos X="12" Y="763"/>
+        <TopLine Value="652"/>
+        <CursorPos X="33" Y="655"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -74,7 +74,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="924"/>
         <CursorPos X="15" Y="958"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="45"/>
       </Unit>
       <Unit>
         <Filename Value="C:\ProgramData\lazarus\lcl\editbtn.pas"/>
@@ -230,30 +230,6 @@
     <JumpHistory HistoryIndex="28">
       <Position>
         <Filename Value="mainform.pas"/>
-        <Caret Line="805" TopLine="751"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="806" TopLine="751"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="807" TopLine="751"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="803" TopLine="751"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="805" TopLine="751"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
-        <Caret Line="806" TopLine="751"/>
-      </Position>
-      <Position>
-        <Filename Value="mainform.pas"/>
         <Caret Line="807" TopLine="751"/>
       </Position>
       <Position>
@@ -343,6 +319,34 @@
       <Position>
         <Filename Value="mainform.pas"/>
         <Caret Line="798" Column="48" TopLine="754"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="763" Column="12" TopLine="755"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="363" Column="3" TopLine="358"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="219" Column="15" TopLine="188"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="568" Column="22" TopLine="546"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="322" Column="3" TopLine="317"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="657" Column="3" TopLine="652"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="355" Column="24" TopLine="317"/>
       </Position>
     </JumpHistory>
     <RunParams>

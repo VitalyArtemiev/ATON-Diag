@@ -206,6 +206,7 @@ type
     procedure bSaveStateClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     function ConnectSerial: longint;
+    procedure FormShow(Sender: TObject);
     procedure seNumDevicesChange(Sender: TObject);
     procedure tbQueryChange(Sender: TObject);
     procedure teQueryIntervalChange(Sender: TObject);
@@ -352,8 +353,6 @@ begin
   SerPort.DeadLockTimeOut := 4000;
 
   bRescanClick(Sender);
-
-  seNumDevices.OnChange(Sender);
 end;
 
 procedure TMainF.tbQueryChange(Sender: TObject);
@@ -559,13 +558,13 @@ begin
     aOKTotal[i].Value := 0;
     aOKPercent[i].Value := 0;
     aMessagesTotal[i].Value := 0;
+    aOKPercent[i].Color := clWindow;
   end;
   StatusBar.Panels[spTime].Text := '00:00:00';
   StatusBar.Panels[spTimeOuts].Text := '';
   StatusBar.Panels[spCRCErrors].Text := '';
   timeoutCount := 0;
   CRCErrorCount := 0;
-  aOKPercent[i].Color := clWindow;
 end;
 
 function TMainF.ConnectSerial: longint;
@@ -649,6 +648,11 @@ begin
       Result := -6; //driver error: receive framing error
     end;
   end;
+end;
+
+procedure TMainF.FormShow(Sender: TObject);
+begin
+  seNumDevices.OnChange(Sender);
 end;
 
 procedure TMainF.seNumDevicesChange(Sender: TObject);

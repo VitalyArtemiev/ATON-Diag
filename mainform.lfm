@@ -1,7 +1,7 @@
 object MainF: TMainF
-  Left = 1298
+  Left = 1282
   Height = 560
-  Top = 96
+  Top = 219
   Width = 1199
   Caption = 'ATON Diag'
   ClientHeight = 560
@@ -11,6 +11,8 @@ object MainF: TMainF
   Constraints.MinHeight = 560
   Constraints.MinWidth = 780
   OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poDefault
   LCLVersion = '3.4.0.0'
   object bConnect: TButton
     AnchorSideLeft.Control = seBaudRate
@@ -412,9 +414,9 @@ object MainF: TMainF
       AnchorSideTop.Side = asrBottom
       Left = 12
       Height = 15
-      Top = 295
+      Top = 291
       Width = 50
-      BorderSpacing.Top = 144
+      BorderSpacing.Top = 140
       Caption = 'Timeouts'
     end
     object lCRCErr: TLabel
@@ -423,7 +425,7 @@ object MainF: TMainF
       AnchorSideTop.Side = asrBottom
       Left = 12
       Height = 15
-      Top = 322
+      Top = 318
       Width = 56
       BorderSpacing.Top = 12
       Caption = 'CRC Errors'
@@ -434,7 +436,7 @@ object MainF: TMainF
       AnchorSideTop.Side = asrBottom
       Left = 12
       Height = 15
-      Top = 376
+      Top = 372
       Width = 26
       BorderSpacing.Top = 12
       Caption = 'Total'
@@ -445,7 +447,7 @@ object MainF: TMainF
       AnchorSideTop.Side = asrBottom
       Left = 12
       Height = 15
-      Top = 349
+      Top = 345
       Width = 57
       BorderSpacing.Top = 12
       Caption = 'Margin OK'
